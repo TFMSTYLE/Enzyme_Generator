@@ -4,7 +4,7 @@
 bl_info = {
     "name": "Enzyme",
     "author": "The French Monkey",
-    "version": (1, 0, 1),
+    "version": (1, 0, 2),
     "blender": (4, 2, 0),
     "location": "View3D > Sidebar > Enzyme",
     "description": "Generate parametric enzyme",
@@ -17,6 +17,11 @@ import random
 import math
 from math import sin, cos, pi, tau
 from mathutils import Vector, noise, Matrix
+
+try:
+    from . import relay_updater
+except ImportError:  # the Addon Collection has its own updates
+    relay_updater = None
 
 # ----------------------------------------------------------
 # MATERIALS
@@ -773,6 +778,8 @@ class VIEW3D_PT_enzyme_generator(bpy.types.Panel):
     bl_category = "Enzyme"
 
     def draw(self, context):
+        if relay_updater:
+            relay_updater.draw(self.layout)
         layout = self.layout
         p = context.scene.eg_props
         o = context.object
@@ -861,11 +868,15 @@ classes = (
 )
 
 def register():
+    if relay_updater:
+        relay_updater.register("blender-enzyme")
     for c in classes:
         bpy.utils.register_class(c)
     bpy.types.Scene.eg_props = bpy.props.PointerProperty(type=EG_Props)
 
 def unregister():
+    if relay_updater:
+        relay_updater.unregister()
     for c in reversed(classes):
         bpy.utils.unregister_class(c)
     del bpy.types.Scene.eg_props
