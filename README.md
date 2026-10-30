@@ -3,7 +3,7 @@
 ![enzyme-thumb](https://github.com/user-attachments/assets/0fef119e-c1be-4a79-a086-a85243001955)
 
 **Author:** The French Monkey (TFMSTYLE)  
-**Version:** 1.0.0  
+**Version:** 1.0.1  
 
 ---
 
@@ -177,3 +177,21 @@ The Live Update state is preserved.
 - Each enzyme is color-coded according to its class type for easy identification.  
 - For best results, apply subdivision and smoothing modifiers to the generated meshes for final rendering.  
 - Generated materials use Blender’s Principled BSDF shader with subtle subsurface scattering for realistic shading.
+
+---
+
+## Install
+
+Needs Blender 4.2 or later. Get the zip from [tfmstyle.com](https://tfmstyle.com), then in Blender open Edit > Preferences > Get Extensions, open the menu at the top right and pick Install from Disk.
+
+To build the zip yourself, run this in the repo folder:
+
+```bash
+blender --command extension build
+```
+
+---
+
+## License
+
+GPL 3.0 or later. See [LICENSE](LICENSE).
