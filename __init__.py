@@ -4,7 +4,7 @@
 bl_info = {
     "name": "Enzyme",
     "author": "The French Monkey",
-    "version": (1, 0, 2),
+    "version": (1, 0, 3),
     "blender": (4, 2, 0),
     "location": "View3D > Sidebar > Enzyme",
     "description": "Generate parametric enzyme",
@@ -616,6 +616,8 @@ class EG_OT_generate(bpy.types.Operator):
     bl_idname, bl_label, bl_options = "mesh.eg_generate_enzyme", "Generate Enzyme", {"REGISTER", "UNDO"}
 
     def execute(self, context):
+        if context.mode != "OBJECT":
+            bpy.ops.object.mode_set(mode="OBJECT")
         p = context.scene.eg_props
 
         base_master = f"{p.enzyme_type}_Master"

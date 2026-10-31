@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.3
+
+- Generate now works from Edit Mode. It used to stop with an error and leave pieces behind
+
 ## 1.0.2
 
 - Added update checks: when a new version is published on Relay, an Update button appears in this panel. Nothing goes online when Allow Online Access is off, and Blender store installs keep updating through the store
